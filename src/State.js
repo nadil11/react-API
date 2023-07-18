@@ -1,10 +1,12 @@
 import React,{useState} from "react";
-import "./State.css"
+import "./States.css"
+import Login from "./Login"
+import Signin from "./Sign-in";
 
 
 
 function State() {
-    const [State,setState] = useState(0)
+    const [State,setState] = useState(true)
     return(
         <>
             <div className="main1">
@@ -12,23 +14,26 @@ function State() {
         onClick={
             function name(params) {
                 console.log('button clicked')
-                setState(State+1)   
+                // setState(State+1) 
+                setState(true)
                  
             }
         }      
         >
-            +</button>
+            Login</button>
 
             <button className="btntop2" 
         onClick={
             function name(params) {
                 console.log('button clicked')
-                setState(State-1)    
+                // setState(State-1) 
+                setState(false)   
             }
         }      
         >
-            -</button>
-            <h1>{State}</h1>
+            Sign-in</button>
+            {/* <h1>{State}</h1> */}
+            {State ? <Login/> : <Signin/>}
     </div>
         </>
         
