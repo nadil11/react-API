@@ -1,0 +1,27 @@
+.allink {
+  padding: 2rem;
+  background-color: aliceblue;
+}
+
+.btn {
+  padding: 10px;
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: wheat;
+  margin: 10px;
+}
+
+.link {
+  text-decoration: none;
+  font-family: sans-serif;
+  color: black;
+  font-size: 13px;
+}
+
+.link:hover {
+  color: brown;
+}
+
+.out{
+  width: 100%;
+}
