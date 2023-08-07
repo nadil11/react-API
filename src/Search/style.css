@@ -41,3 +41,11 @@ body{
 .box .select-condainer{
     width: 5rem;
 }
+
+.notfound{
+    color: white;
+}
+
+.loader{
+    color: aqua;
+}

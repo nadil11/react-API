@@ -15,7 +15,14 @@ function Searchbox({updateState}) {
         try {
             let response = await searchCategories(searchedValue)
             let convertoJSON = await response?.json();
-            updateState(convertoJSON.meals)
+            if(convertoJSON.meals === null){
+
+                updateState([])
+            }else{
+                updateState(convertoJSON.meals)
+            }
+
+            
         } catch (error) {
             
         }

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { getCategories } from './API';
 import Searchbox from './Searchbox';
 import CardUI from './CardUI';
+import Loading from "./Loading"
 import "./style.css"
 
 
 function App() {
-
+   
+  const [loading,setLoading] = useState(false)
   const [categories,setCategories] = useState([]);
   const [filterCount,setFilterCount] = useState(2);
 
@@ -18,6 +20,7 @@ function App() {
       let ConvertoJSON = await response?.json();
       let filteredCategories = ConvertoJSON?.categories?.filter((elements,index)=> index < filterCount)
       setCategories(filteredCategories)
+      setLoading(false)
 
     } catch (error) {
       
@@ -26,6 +29,7 @@ function App() {
   }
 
   useEffect(() =>{
+    setLoading(true)
     getAllCategories()
     return () =>{
 
@@ -43,8 +47,8 @@ function App() {
 
 
   return (
-   <div>
-
+    <>
+    <div>
     <div className='box'>
         <Searchbox updateState={ifSearchUpdateState}/>
 
@@ -61,18 +65,23 @@ function App() {
 
         <div className='condainer'>
           {
-            categories?.map((item,index)=>{
-              console.log(item.m);
+            loading?
+            <div className='loader'>
+              <Loading/>
+            </div>
+            :
+            categories?.length>0 ?
+            categories?.map((item)=>{
               return(
-                <div key={index}>
                   <CardUI data={item}/>
-                </div>
               )
             })
-          }
+            :
+            <div className='notfound'> Not found!</div>
+        }
         </div>
-
-   </div>
+      </div>
+   </>
   )
 }
 
