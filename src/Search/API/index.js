@@ -1,8 +1,8 @@
 import { API_start } from "./start";
-import { categories,random } from "./endpoint";
+import { categories,filtered,random } from "./endpoint";
 
 export const getCategories = ()=>{
-    let response = fetch(`${API_start}/${categories}`)
+    let response = fetch(`${API_start}/${filtered}`)
     return response;
 }
 

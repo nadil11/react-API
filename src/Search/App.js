@@ -4,6 +4,7 @@ import Searchbox from './Searchbox';
 import CardUI from './CardUI';
 import Loading from "./Loading"
 import "./style.css"
+import { Link } from 'react-router-dom';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     try {
       let response = await getCategories()
       let ConvertoJSON = await response?.json();
-      let filteredCategories = ConvertoJSON?.categories?.filter((elements,index)=> index < filterCount)
+      let filteredCategories = ConvertoJSON?.meals?.filter((elements,index)=> index < filterCount)
       setCategories(filteredCategories)
       setLoading(false)
 
@@ -31,9 +32,9 @@ function App() {
   useEffect(() =>{
     setLoading(true)
     getAllCategories()
-    return () =>{
+    // return () =>{
 
-    }
+    // }
   },[filterCount])
     
 
@@ -48,7 +49,7 @@ function App() {
 
   return (
     <>
-    <div>
+
     <div className='box'>
         <Searchbox updateState={ifSearchUpdateState}/>
 
@@ -71,16 +72,19 @@ function App() {
             </div>
             :
             categories?.length>0 ?
+
             categories?.map((item)=>{
+              console.log(item,"hii");
               return(
+                <Link to={`Product/${item.idMeal}`}>
                   <CardUI data={item}/>
+                </Link>
               )
             })
             :
             <div className='notfound'> Not found!</div>
         }
         </div>
-      </div>
    </>
   )
 }

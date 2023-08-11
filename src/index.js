@@ -1,36 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from './Search/App';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Layout from "./Layout";
-// import Accounts from "./Accounts";
-// import Password from "./Password";
-// import Security from "./Security";
-// import Application from "./Application";
-// import Notification from "./Notification";
-// import Error from "./Error";
-// // import "./Router.css";
+import { BrowserRouter,Routes,Route } from  "react-router-dom"
+import Home from './Search2/Home';
+import App from './Search/App';
+import Product from './Search/Product';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
- {/* <Meals/> */}
-  <App/>
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<App/>}></Route>
+      <Route path='/Product/:id' element={<Product/>}></Route>
+    </Routes>
+  </BrowserRouter>
  <ToastContainer/>
-    {/* <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="" element={<Accounts />}></Route>
-          <Route path="password" element={<Password />}></Route>
-          <Route path="security" element={<Security />}></Route>
-          <Route path="application" element={<Application />}></Route>
-          <Route path="notification" element={<Notification />}></Route>
-        </Route>
-        <Route path="*" element={<Error/>}></Route>
-      </Routes>
-    </BrowserRouter> */}
   </>
 );
